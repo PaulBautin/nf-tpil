@@ -1,0 +1,52 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
+name: "segmentation_fslfirst"
+## TODO nf-core: Add a description of the module and list keywords
+description: Perform subcortical structure segmentation using FSL FIRST
+keywords:
+  - Segmentation
+  - T1
+  - Subcortical structures
+tools:
+  - "FSL":
+      description: "FSL Toolbox"
+      homepage: "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki"
+
+## TODO nf-core: Add a description of all of the variables used as input
+input:
+  # Only when we have meta
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing sample information
+        e.g. `[ id:'sample1', single_end:false ]`
+  
+  ## TODO nf-core: Delete / customise this example input
+  - t1:
+      type: file
+      description: Nifti T1 volume to perform FIRST
+      pattern: "*.{nii,nii.gz}"
+
+## TODO nf-core: Add a description of all of the variables used as output
+output:
+  #Only when we have meta
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing sample information
+        e.g. `[ id:'sample1', single_end:false ]`
+  
+  - versions:
+      type: file
+      description: File containing software versions
+      pattern: "versions.yml"
+  ## TODO nf-core: Delete / customise this example output
+  - subcortex_segmentation:
+      type: file
+      description: Nifti subcortex segmentation volume
+      pattern: "*.{nii,nii.gz}"
+
+authors:
+  - "@paulbautin"
+maintainers:
+  - "@paulbautin"
